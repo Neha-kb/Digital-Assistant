@@ -4,6 +4,7 @@ import pywhatkit
 import datetime
 import wikipedia
 import pyjokes
+from datetime import date
 
 listener = sr.Recognizer()
 engine = pyttsx3.init()
@@ -46,7 +47,8 @@ def run_alexa():
         print(info)
         talk(info)    
     elif 'date' in command:
-        talk('Sorry, I have a headache')
+        today=date.today()
+        talk('Today's date is' +today)
     elif 'are you single' in command:
         talk('I am in a relationship with wifi')     
     elif 'joke' in command:
@@ -58,3 +60,5 @@ def run_alexa():
 
 while True:
     run_alexa()
+  
+talk("Have a nice day")
