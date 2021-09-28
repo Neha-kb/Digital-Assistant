@@ -4,13 +4,16 @@ import pywhatkit
 import datetime
 import wikipedia
 import pyjokes
-from datetime import date
+import requests
 
 listener = sr.Recognizer()
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')
 engine.setProperty('voice',voices[1].id)
 
+engine.say('Hello, I am Alexa')
+engine.say('How can I help you?')
+engine.runAndWait()
 
 def talk(text):    
     engine.say(text)
@@ -47,18 +50,22 @@ def run_alexa():
         print(info)
         talk(info)    
     elif 'date' in command:
-        today=date.today()
-        talk('Today's date is' +today)
+        talk('sorry, I have a headache')
     elif 'are you single' in command:
         talk('I am in a relationship with wifi')     
     elif 'joke' in command:
         print_that = pyjokes.get_joke()
         talk(print_that)
-        print(print_that)
+        print(print_that)  
+    elif 'weather' in command:
+        city = input('input the city name')
+        print(city)
+        print('Displaying Weater report for:'+ city)
+        url = 'https://wttr.in/{}'.format(city)
+        res = requests.get(url)
+        print (res.text)     
     else:
-        talk('Please say the command again.')
+            talk('Please say the command again.')
 
 while True:
     run_alexa()
-  
-talk("Have a nice day")
