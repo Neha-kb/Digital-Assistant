@@ -11,7 +11,7 @@ engine = pyttsx3.init()
 voices = engine.getProperty('voices')
 engine.setProperty('voice',voices[1].id)
 
-engine.say('Hello, I am Alexa')
+engine.say('Hello, I am Alladin')
 engine.say('How can I help you?')
 engine.runAndWait()
 
@@ -27,13 +27,13 @@ def take_command():
             command = listener.recognize_google(voice)
             command = command.lower()
             if 'alexa' in command:
-                command = command.replace('alexa','')
+                command = command.replace('Alladin','')
                 print(command)
     except:
         pass
     return command
 
-def run_alexa():
+def run_alladin():
     command = take_command() 
     print(command)
     if 'play' in command:
@@ -68,4 +68,4 @@ def run_alexa():
             talk('Please say the command again.')
 
 while True:
-    run_alexa()
+    run_alladin()
