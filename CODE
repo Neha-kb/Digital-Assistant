@@ -5,6 +5,7 @@ import datetime
 import wikipedia
 import pyjokes
 import requests
+from datetime import date
 
 listener = sr.Recognizer()
 engine = pyttsx3.init()
@@ -50,7 +51,8 @@ def run_alladin():
         print(info)
         talk(info)    
     elif 'date' in command:
-        talk('sorry, I have a headache')
+        today=str(date.today())
+        talk("Today's date is" +today)
     elif 'are you single' in command:
         talk('I am in a relationship with wifi')     
     elif 'joke' in command:
